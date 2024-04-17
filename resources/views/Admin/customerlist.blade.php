@@ -57,6 +57,7 @@
                                     <td>
                                         <a href="{{ route('admin.approved', ['id' => $value->id]) }}" class="badge bg-success">Approved</a>
                                         <a href="{{ route('admin.reject', ['id' => $value->id]) }}" class="badge bg-danger">Reject</a>
+                                        <a href="{{ route('admin.edit', ['id' => $value->id]) }}" class="badge bg-danger">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach

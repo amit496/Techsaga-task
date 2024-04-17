@@ -23,6 +23,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/apprved/{id}', [adminController::class, 'approved'])->name('admin.approved');
     Route::get('/reject/{id}', [adminController::class, 'reject'])->name('admin.reject');
+    Route::get('/edit/{id}', [adminController::class, 'edit'])->name('admin.edit');
 
 });
 
