@@ -10,13 +10,13 @@ include 'Auth\Auth.php';
 Route::redirect('/', '/customer/login', 301);
 
 
-Route::middleware('redirectif')->prefix('customer')->group(function () {
+Route::prefix('customer')->group(function () {
     Route::get('/dashboard', [CustomerController::class, 'customerDashboard'])->name('customer.dashboard');
     Route::get('/profile', [CustomerController::class, 'customerProfile'])->name('customer.profile');
 });
 
 
-Route::middleware('redirectadminif')->prefix('admin')->group(function () {
+Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard', [adminController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/customer/list', [adminController::class, 'customerList'])->name('admin.customerlist');
