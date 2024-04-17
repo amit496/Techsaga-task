@@ -46,7 +46,13 @@
                                     <td>{{$value->email}}</td>
                                     <td>{{$value->contact}}</td>
                                     <td>
-                                        {!!$value->status!!}
+                                        @if ($value->approved == 1)
+                                            <span class="badge bg-success">Approved</span>
+                                        @elseif ($value->approved == 2)
+                                            <span class="badge bg-secondary">Rejected</span>
+                                        @elseif ($value->approved == 0)
+                                            <span class="badge bg-warning">Pending</span>
+                                        @endif
                                     </td>
                                     <td>
                                         <a href="{{ route('admin.approved', ['id' => $value->id]) }}" class="badge bg-success">Approved</a>
