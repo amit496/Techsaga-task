@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
 Route::middleware(['redirectif'])->prefix('customer')->group(function () {
+
     Route::get('/login', [AuthController::class, 'customerLogin'])->name('customer.login');
     Route::post('/login/submit', [AuthController::class, 'customerLoginSubmit'])->name('customer.login.submit');
 
@@ -12,6 +13,7 @@ Route::middleware(['redirectif'])->prefix('customer')->group(function () {
 
     Route::get('/generateOtp',[AuthController::class, 'generateOtp'])->name('generateOtp');
 });
+
 
 Route::get('customer/logout', [AuthController::class, 'customerlogout'])->name('customer.logout');
 
