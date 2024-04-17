@@ -19,6 +19,6 @@ class AdminAuth
             // Agar email ya user session mein hai, request ko aage bhejein
             return $next($request);
         }
-        return redirect()->route('customer.dashboard');
+        return redirect()->route('admin.login');
     }
 }
