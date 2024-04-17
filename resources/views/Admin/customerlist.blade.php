@@ -47,11 +47,11 @@
                                     <td>{{$value->contact}}</td>
                                     <td>
                                         @if($value->status == 1)
-                                            '<span class="badge bg-success">Approved</span>'
+                                            <span class="badge bg-success">Approved</span>
                                         @elseif($value->status)
-                                            '<span class="badge bg-secondary">Rejected</span>';
+                                            <span class="badge bg-secondary">Rejected</span>
                                         @else
-                                            '<span class="badge bg-warning">Pending</span>';
+                                            <span class="badge bg-warning">Pending</span>
                                         @endif
                                     </td>
                                     <td>
