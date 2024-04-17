@@ -15,8 +15,8 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->session()->has('email')) {
-            // Agar email ya user session mein hai, request ko aage bhejein
+        if (Session::has('email')) {
+
             return $next($request);
         }
         return redirect()->route('admin.login');
