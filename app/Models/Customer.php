@@ -27,9 +27,9 @@ class Customer extends Authenticatable
         {
             return '<span class="badge bg-success">Approved</span>';
         }
-        else
+        elseif ($value == 2)
         {
-            return '<span class="badge bg-secondary">Unknown</span>';
+            return '<span class="badge bg-secondary">Rejected</span>';
         }
     }
 

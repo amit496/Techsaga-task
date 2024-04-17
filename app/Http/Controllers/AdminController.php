@@ -30,8 +30,30 @@ class AdminController extends Controller
     {
 
         $findCustomer = Customer::find($id);
-        $customerList = Customer::all();
-        return view('Admin.customerlist', compact('customerList'));
+        if($findCustomer)
+        {
+            $findCustomer->approved = 1;
+            $findCustomer->update();
+            if($findCustomer)
+            {
+                return redirect()->back()->with('success', 'Customer Approved');
+            }
+        }
+    }
+
+    public function reject($id)
+    {
+
+        $findCustomer = Customer::find($id);
+        if($findCustomer)
+        {
+            $findCustomer->approved = 2;
+            $findCustomer->update();
+            if($findCustomer)
+            {
+                return redirect()->back()->with('success', 'Customer Rejectd');
+            }
+        }
     }
 
 
