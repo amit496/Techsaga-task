@@ -51,12 +51,6 @@
                                     <td>
                                         <a href="{{ route('admin.approved', ['id' => $value->id]) }}" class="badge bg-success">Approved</a>
                                         <a href="{{ route('admin.reject', ['id' => $value->id]) }}" class="badge bg-danger">Reject</a>
-                                        {{-- <a href="{{ route('product.edit', ['id' => $value->id]) }}" class="btn btn-success">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a href="{{ route('product.delete', ['id' => $value->id]) }}" class="btn btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a> --}}
                                     </td>
                                 </tr>
                             @endforeach
