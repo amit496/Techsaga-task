@@ -47,8 +47,8 @@
                                     <td>{{$value->contact}}</td>
                                     <td>{!!$value->status!!}</td>
                                     <td>
-                                        <a href="">Approved</a>
-                                        <a href="">Dis</a>
+                                        <a href="{{ route('admin.approved', ['id' => $value->id]) }}" class="btn btn-success">Approved</a>
+                                        <a href="{{ route('product.edit', ['id' => $value->id]) }}" class="btn btn-danger">Reject</a>
                                         {{-- <a href="{{ route('product.edit', ['id' => $value->id]) }}" class="btn btn-success">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>

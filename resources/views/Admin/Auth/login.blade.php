@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-g-12 mb-3">
                                     <label for="password" class="form-label">Enter Passwrod</label>
-                                    <input type="password" class="form-control" id="password" name=password"  autocomplete="off" value="{{old('password')}}">
+                                    <input type="password" class="form-control" id="password" name="password"  autocomplete="off" value="{{old('password')}}">
                                 </div>
                             </div>
 

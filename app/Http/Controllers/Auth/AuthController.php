@@ -127,7 +127,6 @@ class AuthController extends Controller
 
         if(Auth::guard('user')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
         {
-            Auth::guard('user')->login($user);
             Session::put('email', $request->email);
             return redirect()->route('admin.dashboard');
         }

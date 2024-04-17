@@ -20,6 +20,10 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/admin/dashboard', [adminController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/admin/customer/list', [adminController::class, 'customerList'])->name('admin.customerlist');
+
+    Route::get('/apprved/{id}', [adminController::class, 'approved'])->name('admin.approved');
+    Route::get('/reject/{id}', [adminController::class, 'reject'])->name('admin.reject');
+
 });
 
 
