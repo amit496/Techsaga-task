@@ -16,7 +16,7 @@ class CustomerAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Session::has('email')) {
+        if (Session::has('customerloggedin')) {
             return $next($request);
         }
         return redirect()->route('customer.login');

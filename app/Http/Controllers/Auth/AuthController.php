@@ -59,6 +59,7 @@ class AuthController extends Controller
         if ($user && $user->otp == $request->otp) {
             Auth::guard('customer')->login($user);
             Session::put('email', $request->email);
+            Session::put('customerloggedin', true);
             return response()->json(['success' => true, 'message' => 'Login successful']);
         } else {
             return response()->json(['success' => false, 'errors' => ['Invalid credentials']]);
@@ -128,6 +129,7 @@ class AuthController extends Controller
         if(Auth::guard('user')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
         {
             Session::put('email', $request->email);
+            Session::put('adminloggedin', true);
             return redirect()->route('admin.dashboard');
         }
         else
@@ -139,7 +141,7 @@ class AuthController extends Controller
 
     public function adminlogout()
     {
-        
+
         Auth::logout();
         return redirect()->route('admin.login');
     }

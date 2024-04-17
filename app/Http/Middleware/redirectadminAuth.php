@@ -15,7 +15,7 @@ class redirectadminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Session::has('email')) {
+        if (!Session::has('adminloggedin')) {
             return $next($request);
         }
         return redirect()->route('admin.dashboard');

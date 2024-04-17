@@ -15,7 +15,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Session::has('email')) {
+        if (Session::has('adminloggedin')) {
 
             return $next($request);
         }
