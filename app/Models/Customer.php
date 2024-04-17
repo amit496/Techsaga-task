@@ -17,21 +17,11 @@ class Customer extends Authenticatable
     protected $fillable = ['name' , 'email', 'contact', 'password', 'approved', 'otp'];
 
 
-    public function getStatusAttribute($value)
+    public function getEmailAttribute($value)
     {
-        if ($value == 1)
-        {
-            return '<span class="badge bg-success">Approved</span>';
-        }
-        elseif ($value == 2)
-        {
-            return '<span class="badge bg-secondary">Rejected</span>';
-        }
-        else
-        {
-            return '<span class="badge bg-warning">Pending</span>';
-        }
+        return ucfirst($value);
     }
+
 
 
     public function setNameAttribute($value)
