@@ -57,5 +57,32 @@ class AdminController extends Controller
     }
 
 
+    public function edit($id)
+    {
+        $findCustomer = Customer::find($id);
+        return view('Admin.customeredit' , compact('findCustomer'));
+    }
+
+    public function editSubmit(request $request , $id)
+    {
+        $findCustomer = Customer::find($id);
+        if($findCustomer)
+        {
+            $findCustomer->name = $request->input('name');
+            $findCustomer->email = $request->input('email');
+            $findCustomer->contact = $request->input('contact');
+            $findCustomer->update();
+            if($findCustomer)
+            {
+                return redirect()->route('admin.customerlist')->with('success', 'Customer details successfully updated');
+            }
+            else
+            {
+                return redirect()->back()->with('error', 'Customer details not updated');
+            }
+        }
+    }
+
+
 
 }

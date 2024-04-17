@@ -24,6 +24,16 @@
             <div class="row">
                 <div class="card-body">
                     <!-- Main content -->
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <table class="table" id="customerTable">
                         <thead>
                             <tr>
