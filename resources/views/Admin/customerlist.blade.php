@@ -46,17 +46,11 @@
                                     <td>{{$value->email}}</td>
                                     <td>{{$value->contact}}</td>
                                     <td>
-                                        @if($value->status == 1)
-                                            <span class="badge bg-success">Approved</span>
-                                        @elseif($value->status)
-                                            <span class="badge bg-secondary">Rejected</span>
-                                        @else
-                                            <span class="badge bg-warning">Pending</span>
-                                        @endif
+                                        {!!$value->status!!}
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.approved', ['id' => $value->id]) }}" class="btn btn-success">Approved</a>
-                                        <a href="{{ route('admin.reject', ['id' => $value->id]) }}" class="btn btn-danger">Reject</a>
+                                        <a href="{{ route('admin.approved', ['id' => $value->id]) }}" class="badge bg-success">Approved</a>
+                                        <a href="{{ route('admin.reject', ['id' => $value->id]) }}" class="badge bg-danger">Reject</a>
                                         {{-- <a href="{{ route('product.edit', ['id' => $value->id]) }}" class="btn btn-success">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>

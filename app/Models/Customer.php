@@ -19,17 +19,17 @@ class Customer extends Authenticatable
 
     public function getStatusAttribute($value)
     {
-        if ($value == 0)
-        {
-            return '<span class="badge bg-warning">Pending</span>';
-        }
-        elseif ($value == 1)
+        if ($value == 1)
         {
             return '<span class="badge bg-success">Approved</span>';
         }
         elseif ($value == 2)
         {
             return '<span class="badge bg-secondary">Rejected</span>';
+        }
+        else
+        {
+            return '<span class="badge bg-warning">Pending</span>';
         }
     }
 
