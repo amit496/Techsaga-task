@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
-
-Route::prefix('customer')->group(function () {
+Route::middleware(['redirectif'])->prefix('customer')->group(function () {
     Route::get('/login', [AuthController::class, 'customerLogin'])->name('customer.login');
     Route::post('/login/submit', [AuthController::class, 'customerLoginSubmit'])->name('customer.login.submit');
 
@@ -17,7 +16,7 @@ Route::prefix('customer')->group(function () {
 Route::get('customer/logout', [AuthController::class, 'customerlogout'])->name('customer.logout');
 
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['redirectadminif'])->prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'adminLogin'])->name('admin.login');
     Route::post('/login/submit', [AuthController::class, 'adminLoginSubmit'])->name('admin.login.submit');
 
