@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminAuth
+class redirectadminAuth
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,9 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->session()->has('email')) {
-            // Agar email ya user session mein hai, request ko aage bhejein
+        if (!$request->session()->has('email')) {
             return $next($request);
         }
-        return redirect()->route('customer.dashboard');
+        return redirect()->route('admin.dashboard');
     }
 }

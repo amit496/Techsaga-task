@@ -19,7 +19,7 @@ class CustomerAuth
         if ($request->session()->has('email')) {
             return $next($request);
         }
-        return redirect->route('customer.login');
+        return redirect()->route('customer.login');
 
     }
 }

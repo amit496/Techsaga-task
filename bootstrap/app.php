@@ -3,6 +3,10 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use App\Http\Middleware\CustomerAuth;
+use App\Http\Middleware\redirectAuth;
+use App\Http\Middleware\AdminAuth;
+use App\Http\Middleware\redirectadminAuth;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,7 +15,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'customrauth' => CustomerAuth::class,
+            'adminauth' => AdminAuth::class,
+            'redirectif' => redirectAuth::class,
+            'redirectadminif' => redirectadminAuth::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

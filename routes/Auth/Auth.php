@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
-Route::prefix('customer')->group(function () {
+
+Route::middleware(['redirectif'])->prefix('customer')->group(function () {
     Route::get('/login', [AuthController::class, 'customerLogin'])->name('customer.login');
     Route::post('/login/submit', [AuthController::class, 'customerLoginSubmit'])->name('customer.login.submit');
 
@@ -11,16 +12,18 @@ Route::prefix('customer')->group(function () {
     Route::post('register/submit', [AuthController::class, 'customerRegisterSubmit'])->name('customer.register.submit');
 
     Route::get('/generateOtp',[AuthController::class, 'generateOtp'])->name('generateOtp');
-    Route::get('/logout', [AuthController::class, 'customerlogout'])->name('customer.logout');
 });
 
-Route::prefix('admin')->group(function () {
+Route::get('customer/logout', [AuthController::class, 'customerlogout'])->name('customer.logout');
+
+
+Route::middleware(['redirectif'])->prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'adminLogin'])->name('admin.login');
     Route::post('/login/submit', [AuthController::class, 'adminLoginSubmit'])->name('admin.login.submit');
-    Route::get('/logout', [AuthController::class, 'adminlogout'])->name('admin.logout');
 
 });
 
+Route::get('admin/logout', [AuthController::class, 'adminlogout'])->name('admin.logout');
 
 
 
