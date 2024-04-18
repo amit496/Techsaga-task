@@ -7,33 +7,31 @@
         <nav class="mt-2">
             <ul class="nav nav-treeview nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             {{-- Admin --}}
-            @auth('user')
-                @if(Auth::guard('user')->user()->type == '1' || Auth::guard('user')->user()->type == '2')
-                    <li class="nav-item">
-                        <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                            <i class="fas fa-tachometer-alt nav-icon"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
+            @if(Session::has('adminloggedin'))
+                <li class="nav-item">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                        <i class="fas fa-tachometer-alt nav-icon"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a href="{{ route('admin.customerlist') }}" class="nav-link">
-                            <i class="fas fa-tachometer-alt nav-icon"></i>
-                            <p>Customer List</p>
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.customerlist') }}" class="nav-link">
+                        <i class="fas fa-tachometer-alt nav-icon"></i>
+                        <p>Customer List</p>
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a href="{{route('admin.logout')}}" class="nav-link">
-                            <i class="fas fa-sign-out-alt nav-icon"></i>
-                            <p>Logout</p>
-                        </a>
-                    </li>
-                @endif
-            @endauth
+                <li class="nav-item">
+                    <a href="{{route('admin.logout')}}" class="nav-link">
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+            @endif
 
             {{-- Customer --}}
-            @auth('customer')
+            @if(Session::has('customerloggedin'))
                 {{-- Display customer menu --}}
                 <li class="nav-item">
                     <a href="{{route('customer.dashboard')}}" class="nav-link">
@@ -55,7 +53,7 @@
                         <p>Logout</p>
                     </a>
                 </li>
-            @endauth
+            @endif
 
             </ul>
         </nav>

@@ -105,8 +105,8 @@ class AuthController extends Controller
 
     public function customerlogout()
     {
-
-        Auth::logout();
+        Session::forget('customerloggedin');
+        Auth::guard('customer')->logout();
         return redirect()->route('customer.login');
     }
 
@@ -142,7 +142,8 @@ class AuthController extends Controller
     public function adminlogout()
     {
 
-        Auth::logout();
+        Session::forget('adminloggedin');
+        Auth::guard('user')->logout();
         return redirect()->route('admin.login');
     }
 }
